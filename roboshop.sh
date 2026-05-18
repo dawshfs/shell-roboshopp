@@ -15,4 +15,5 @@ do
     fi
 
     echo "$instance: $IP"
+    
 done
