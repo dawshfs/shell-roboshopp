@@ -8,8 +8,10 @@ N="\e[0m"
 
 LOGS_FOLDER="/var/log/shell-roboshop"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
+SCRIPT_DIR=$PWD
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/16-logs.log
 MONGODB_HOST=mongodb.dawhfs.fun
+
 
 mkdir -p $LOGS_FOLDER
 echo "Script started executed at: $(date)" | tee -a $LOG_FILE
@@ -37,14 +39,18 @@ VALIDATE $? "Enable NodeJS"
 dnf install nodejs -y &>>$LOG_FILE
 VALIDATE $? "Installing NodeJS"
 
-id roboshop
+
+id roboshop 
 
 if [ $? -ne 0 ]; then
-    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
-    VALIDATE $? "user: roboshop created"
+    useradd --system --home /app --shell /sbin/nologin \
+    --comment "roboshop system user" roboshop
+
+    VALIDATE $? "User: roboshop created"
 else
-    echo -e "user already exits ...$Y SKIPPING $N"
+    echo -e "User already exists ... ${Y}SKIPPING${N}"
 fi
+
 
 mkdir -p /app &>>$LOG_FILE
 VALIDATE $? "creating app directory"
@@ -64,7 +70,7 @@ VALIDATE $? "unzip catalogue done"
 npm install &>>$LOG_FILE
 VALIDATE $? "Installing dependencies done"
 
-cp catalogue.service /etc/systemd/system/catalogue.service &>>$LOG_FILE
+cp SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service &>>$LOG_FILE
 VALIDATE $? "copy mongo repo"
 
 systemctl daemon-reload &>>$LOG_FILE
