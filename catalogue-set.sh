@@ -39,7 +39,6 @@ fi
 
 
 mkdir -p /app &>>$LOG_FILE
-VALIDATE $? "creating app directory"
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip &>>$LOG_FILE
 cd /app &>>$LOG_FILE
 rm -rf /app/* &>>$LOG_FILE
