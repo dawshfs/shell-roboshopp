@@ -58,4 +58,3 @@ else
 fi
 
 systemctl restart catalogue &>>$LOG_FILE
-VALIDATE $? "Restarted catalogue"
