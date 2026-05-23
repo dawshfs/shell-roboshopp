@@ -1,8 +1,8 @@
 #!/bin/bash
 
-AMI_ID="ami-09c813fb71547fc4f"
-SG_ID="sg-07c8acf3fa6b923fa" # replace with your SG ID
-ZONE_ID="Z0948150OFPSYTNVYZOY" # replace with your ID
+AMI_ID="ami-0220d79f3f480ecf5"
+SG_ID="sg-0e0623cb2d0a1a386"
+ZONE_ID="Z0277344SGE3U6H4KTFH"
 DOMAIN_NAME="dawshfs.fun"
 
 for instance in $@ # mongodb redis mysql
