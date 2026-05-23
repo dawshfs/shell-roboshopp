@@ -70,7 +70,7 @@ VALIDATE $? "unzip catalogue done"
 npm install &>>$LOG_FILE
 VALIDATE $? "Installing dependencies done"
 
-cp SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service &>>$LOG_FILE
+cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service &>>$LOG_FILE
 VALIDATE $? "copy mongo repo"
 
 systemctl daemon-reload &>>$LOG_FILE
