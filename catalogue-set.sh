@@ -26,8 +26,8 @@ if [ $USERID -ne 0 ]; then
 fi
 
 dnf module disablqe nodejs -y &>>$LOG_FILE
-dnf module enablee nodejs:20 -y &>>$LOG_FILE
-dnf install nodejss -y &>>$LOG_FILE
+dnf module enable nodejs:20 -y &>>$LOG_FILE
+dnf install nodejs -y &>>$LOG_FILE
 id roboshop 
 
 if [ $? -ne 0 ]; then
